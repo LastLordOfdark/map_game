@@ -7,5 +7,5 @@ setup(
     packages=['map_game'],
     description='Simple game',
     # install_requires=['click'],
-    entry_points={'console_scripts': ['game = map_game.main:run']},
+    entry_points={'console_scripts': ['load-xml = map_game.loader:load']},
 )
