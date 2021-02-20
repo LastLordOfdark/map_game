@@ -10,3 +10,28 @@
 
 * XML
 * pygame
+
+## Формат базы данных
+
+База данныхм-мэто словарь
+С основными ключами
+
+* way
+* house
+* area
+
+Значение для каждого ключа - это список объектов
+
+### Объект Way
+
+* id
+* points
+* color
+* can_cross
+
+### House и Way
+
+* id
+* points
+* color
+* can_cross
