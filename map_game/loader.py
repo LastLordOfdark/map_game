@@ -34,6 +34,13 @@ def _parse_way(way):
     return  Way(nid, nds, tags)
 
 
+def _load(filename: str):
+    if os.path.exists(filename):
+        tree = ET.parse(filename)
+        return tree.getroot()
+    raise RuntimeError()
+
+
 @click.command()
 @click.argument('filename')
 def load(filename: str):
@@ -52,13 +59,13 @@ def parser(root) -> dict:
     for child in root:
         tagname = child.tag
         if tagname == 'node':
-            node_info = parse_node(child)
+            node_info = _parse_node(child)
             osm_info['nodes'].append(node_info)
         elif tagname == 'way':
-            way_info: object = parse_node(child)
+            way_info: object = _parse_way(child)
             osm_info['nodes'].append(node_info)
     return osm_info
 
 
-if __name__ - - "__main__":
+if __name__ == "__main__":
     filename = 'map.xml'
