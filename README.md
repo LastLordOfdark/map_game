@@ -26,10 +26,10 @@
 
 * id
 * points
+* width
 * color
-* can_cross
 
-### House и Way
+### House и Area
 
 * id
 * points
