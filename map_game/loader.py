@@ -19,16 +19,15 @@ def _parse_node(node):
 
 
 def _parse_way(way):
-    global child, tagname
     attrs = way.attrib
     nid = attrs['id']
     nds = []
     tags = []
     for child in way:
         tagname = child.tag
-        attrs = child.tag
+        attrs = child.attrib
         if tagname == 'nd':
-           nds.append(attrs['ref'])
+            nds.append(attrs['ref'])
         elif tagname == 'tag':
            tags.append(Tag(attrs['k'], attrs['v']))
     return  Way(nid, nds, tags)
@@ -53,7 +52,6 @@ def load(filename: str):
 
 
 def parser(root) -> dict:
-    global node_info
     osm_info = {'nodes': [],
                 'ways': []}
     for child in root:
@@ -62,10 +60,10 @@ def parser(root) -> dict:
             node_info = _parse_node(child)
             osm_info['nodes'].append(node_info)
         elif tagname == 'way':
-            way_info: object = _parse_way(child)
-            osm_info['nodes'].append(node_info)
+            way_info = _parse_way(child)
+            osm_info['ways'].append(way_info)
     return osm_info
 
 
 if __name__ == "__main__":
-    filename = 'map.xml'
+    load()
