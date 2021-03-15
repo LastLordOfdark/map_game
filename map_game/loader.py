@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 import map_game.database
 
 
-Node = namedtuple('Node', 'id lon let')
+Node = namedtuple('Node', 'id lon lat')
 Way = namedtuple('Way', 'id nds tags')
 Tag = namedtuple('Tag', 'k v')
 

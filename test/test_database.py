@@ -11,7 +11,7 @@ def test_parser():
     parsed = map_game.loader.parser(result)
     db = map_game.database.Database()
     packed = db._pack(parsed)
-    assert 'Nodes' in packed
-    assert 'Way' in packed
-    assert 'House' in packed
-    assert 'Area' in packed
+    assert packed['Points']
+    assert packed['Roads']
+    assert packed['Houses']
+    assert packed['Areas']
