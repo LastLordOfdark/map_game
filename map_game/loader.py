@@ -30,7 +30,7 @@ def _parse_way(way):
             nds.append(attrs['ref'])
         elif tagname == 'tag':
            tags.append(Tag(attrs['k'], attrs['v']))
-    return  Way(nid, nds, tags)
+    return Way(nid, nds, tags)
 
 
 def _load(filename: str):
