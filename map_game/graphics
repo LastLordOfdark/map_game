@@ -3,7 +3,7 @@ import pygame
 class Ground(pygame.sprite.Sprite):
     def __init__(self, data, points):
         color = data.color
-        screen_coord = self.convert_coord(data, point)
+        screen_coord = self.convert_coord(data, points)
         x, y = self.get_dimension(screen_coord)
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.Surface((x, y))
@@ -13,6 +13,13 @@ class Ground(pygame.sprite.Sprite):
         points_ = [points[p] for p in data.points]
         screen_coord = [(p.x, p.y) for p in points_]
         return screen_coord]
+
+    def get_dimension(self, coords):
+        x = [c[0] for c in coord]
+        y = [c[1] for c in coord]
+        diff_x = ads(max(x) - min(x))
+        diff_y = ads(max(y) - min(y))
+
 
 
 class Polygon(Ground):
