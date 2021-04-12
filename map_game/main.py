@@ -30,8 +30,8 @@ def run():
         screen.fill(BLACK)
 
         area_sprites.draw(screen)
-        house_sprites.draw(screen)
-        road_sprites.draw(screen)
+        # house_sprites.draw(screen)
+        # road_sprites.draw(screen)
 
         # после отрисовки всего, переворачиваем экран
         pygame.display.flip()

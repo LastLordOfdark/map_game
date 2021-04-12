@@ -1,5 +1,7 @@
 import pygame
 
+BLACK = (0, 0, 0)
+
 class Ground(pygame.sprite.Sprite):
     def __init__(self, data, points):
         super().__init__()
@@ -7,8 +9,8 @@ class Ground(pygame.sprite.Sprite):
         self.screen_coord = self.convert_coord(data, points)
         x, y = self.get_dimension(self.screen_coord)
         self.image = pygame.Surface((x, y))
+        self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
-        self.image.fill((0, 0, 0))
 
     def convert_coord(self, data, points):
         points_ = [points[p] for p in data.points]
