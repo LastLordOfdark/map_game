@@ -3,8 +3,8 @@ from collections import namedtuple
 
 
 Point = namedtuple('Point', 'x y')
-Road = namedtuple('Road', 'points widht color')
-Area = namedtuple('Area', 'points color can_cross')
+Road = namedtuple('Road', 'points width color')
+Area = namedtuple('Area', 'points  color can_cross')
 
 
 class DataBase:
@@ -41,8 +41,8 @@ class DataBase:
         lat = []
         K = 100000
         for point in data:
-            # = latitude - широта    (y)
-            # = longitube - долгота  (x)
+            # latitude - широта   (y)
+            # longitude - долгота (x)
             lon.append(float(point.lon))
             lat.append(float(point.lat))
         dx = max(lon) - min(lon)
@@ -55,11 +55,9 @@ class DataBase:
             idx = int(point.id)
             self.db['Points'][idx] = Point(x, y)
 
-
     def _check_loop(self, way):
         "Проверяет замкнут ли путь"
         return way.nds[0] == way.nds[-1]
-
 
     def _make_area(self, way):
         "Создать объект здания или площади на местности"
@@ -72,10 +70,9 @@ class DataBase:
                 can_cross = False
             else:
                 key = 'Areas'
-                color = (0, 255, 0)
+                color = (0, 0, 255)
                 can_cross = True
         self.db[key][idx] = Area(points, color, can_cross)
-
 
     def _make_road(self, way):
         "Создать дорогу"
